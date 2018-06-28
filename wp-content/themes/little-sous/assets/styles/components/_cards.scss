@@ -1,0 +1,444 @@
+/*------------------------------------
+#FEATURE
+#MINI CARD
+#CARD
+#INSTA CARD
+#ACCENT CARD
+#FEED CARD BIG
+#FEED CARD
+------------------------------------*/
+.image { width: 100%; }
+
+
+@mixin kicker() {
+	background-color: $color__teal;
+	color: $color__white;
+	padding: 0.4rem 1.2rem;
+	display: inline-block;
+	@include font-scale(kicker, 1, $caps: true);
+	@include transition(color);
+	&:hover {
+		background-color: $color__teal--dark;
+		@include transition(background-color);
+	}
+}
+
+@mixin absolute-kicker() {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.card__underlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+
+.hover-card.is-active {
+	.hover-card__image { 
+		opacity: 0.8;
+		// filter: saturate(0%);
+		@include transition(all);
+	}
+	.hover-card__title {
+		color: $color__orange;
+		@include transition(color);
+	}
+}
+
+.card--is-sponsored {
+	&:not(.accent-card):not(.feature-card) {
+		background-color: $color__gray--medium;
+	}
+	[class$="card__content"] {
+		background-color: $color__gray--medium;
+	}
+	[class$="card__title"] {
+		@include font(headlineSans);
+	}
+}
+
+
+/*------------------------------------
+#INSTA CARD
+------------------------------------*/
+.insta-card {
+	@include gallery(3 of 12);
+	display: block;
+	position: relative;
+}
+
+.insta-card__content {
+	@include center-absolute;
+	display: none;
+	width: 80%;
+	background-color: rgba($color__white, 0.8);
+	padding: 1em;
+	text-align: center;
+
+	.is-active & {
+		display: block;
+	}
+}
+
+.insta-card__date {
+	@include font-scale(kicker, 1, $caps: true);
+}
+
+.insta-card__description {
+	@include font-scale(textSans, 2);
+}
+
+/*------------------------------------
+#FEATURE
+------------------------------------*/
+.feature-card {
+	width: 100%;
+	@extend %clearfix;
+	position: relative;
+}
+
+.feature-card--top {
+	@include breakpoint(medium-small) {
+		margin-top: -#{$content-spacing};
+	}
+}
+
+.feature-card__image-wrapper {
+	// allow image to be transparent w/o showing background
+	.feature-card--top & { background-color: $color__white; }
+	display: block;
+	position: relative;
+	@include breakpoint(large-only) {
+		@include span(8 of 12);
+	}
+	@include breakpoint(medium-small) {
+		@include full-width;
+	}
+}
+
+.feature-card__play-icon {
+	@include center-absolute;
+	z-index: 100;
+	background-color: $color__orange;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	border-radius: 50%;
+	svg { 
+		width: 50px; height: 50px;
+		vertical-align: middle;
+		display: inline-block;
+		margin-left: 10px; // optical center
+	}
+
+	@include breakpoint(small-only) {
+		width: 80px;
+		height: 80px;
+		line-height: 80px;
+		svg { width: 50px; height: 50px; }
+	}
+}
+
+.feature-card__content-wrapper {
+	@include breakpoint(large-only) {
+		width: span(5 of 12);
+		position: absolute;
+		top: 50%;
+		right: 0;
+		transform: translateY(-50%);
+
+		@include shadow-border($color__teal);
+	}
+	@include breakpoint(medium-small) {
+		text-align: center;
+		margin-top: -10%;
+	}
+}
+
+.feature-card__content {
+	padding: 1.5em 2em;
+	position:relative;
+	background-color: $color__white;
+}
+
+.feature-card__title {
+	@include font-scale(headline, 1);
+}
+
+.feature-card__subhead {
+	padding-top: 1.5em;
+	@include font-scale(textSans, 3);
+}
+
+
+
+
+
+/*------------------------------------
+#MINI CARD
+------------------------------------*/
+$mini-card-height: 120px;
+
+.mini-cards {
+	@include breakpoint(medium-small) {
+		padding-bottom: 1em;
+		@include center-block;
+		max-width: 400px;
+	}
+}
+
+.mini-card {
+	@include breakpoint(large-only) {
+		@include gallery(4 of 12);
+		margin-bottom: gutter(6);
+	}
+	@include breakpoint(medium-small) {
+		margin-bottom: 1em;
+	}
+	display: flex;
+	position: relative;
+}
+
+.mini-card__image-wrapper {
+	flex-basis: $mini-card-height;
+	flex-shrink: 0;
+	width: $mini-card-height;
+	display: block;
+}
+
+.mini-card__image {
+	height: $mini-card-height;
+}
+
+.mini-card__content {
+	background-color: $color__white;
+	flex-grow: 1;
+	padding: 0.6em;
+	overflow: hidden;
+	height: $mini-card-height;
+	position: relative;
+}
+
+.mini-card__title {
+	@include font-scale(accent, 1);
+}
+
+.mini-card__fade {
+	height: 20px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	box-shadow: inset 0 -21px 15px -1px $color__white;
+}
+
+
+
+
+
+/*------------------------------------
+#CARD
+------------------------------------*/
+.cards,
+.accent-cards,
+.instagrams {
+	@extend %clearfix;
+}
+
+.card {
+	text-align: center;
+	position: relative;
+	@include breakpoint(large-medium) {
+		@include gallery(4 of 12);
+	}
+	@include breakpoint(small-only) {
+		margin-bottom: 3rem;
+	}
+}
+
+.card__image {
+	width: 100%;
+	position: relative;
+	display: block;
+}
+
+.card__category {
+	@include kicker();
+	@include absolute-kicker();
+}
+
+.card__content {
+	padding-left: gutter(8);
+	padding-right: gutter(8);
+	padding-bottom: gutter(8);
+}
+
+.card__title {
+	margin-top: 2rem;
+	@include font-scale(headline, 0.5);
+}
+
+.card__subhead {
+	margin-top: 1rem;
+	@include font-scale(textSans, 3);
+}
+
+
+
+
+
+/*------------------------------------
+#ACCENT CARD
+------------------------------------*/
+
+.accent-card {
+	position: relative;
+	@include breakpoint(large-only) {
+		@include span(5 of 12);
+		&:first-child {
+			@include push(1 of 12);
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	@include breakpoint(medium-only) {
+		max-width: 700px;
+		width: 100%;
+		@include center-block;
+		@include container-padding;
+	}
+}
+
+.accent-card__image-wrapper {
+	@include breakpoint(small-only) {
+		@include full-width();
+	}
+}
+
+.accent-card__content {
+	background-color: $color__white;
+	width: span(4 of 5);
+	display: block;
+	margin: -20% auto 0 auto;
+	@extend %clearfix;
+	text-align: center;
+	position: relative;
+	padding: 1em;
+	@include breakpoint(medium-small) {
+		margin-top: -10%;
+		margin-bottom: gutter(6);
+		width: 90%;
+	}
+}
+
+.accent-card__title {
+	@include font-scale(headline, 0.75);
+}
+
+
+
+
+/*------------------------------------
+#FEED CARD BIG
+------------------------------------*/
+.feed-card--big {
+	margin-top: gutter(8);
+	margin-bottom: gutter(8);
+	position: relative;
+	@extend %clearfix;
+}
+.feed-card--big__image-wrapper {
+	@include breakpoint(large-medium) {
+		@include span(6 of 12);
+	}
+}
+
+.feed-card--big__content {
+	@include breakpoint(large-medium) {
+		@include span(6 of 12 last);
+	}
+	@include breakpoint(small-only) {
+		text-align: center;
+	}
+}
+
+.feed-card--big__category {
+	@include kicker();
+	@include breakpoint(small-only) {
+		@include absolute-kicker;
+	}
+}
+
+.feed-card--big__title {
+	@include font-scale(headline, 1);
+	@include breakpoint(small-only) {
+		padding-top: 0.8em;
+	}
+}
+
+.feed-card--big__subhead {
+	@include font-scale(textSans, 4);
+	padding-top: 1.5em;
+}
+
+
+
+
+
+/*------------------------------------
+#FEED CARD
+------------------------------------*/
+.feed-cards {
+	@include breakpoint(large-only) {
+		@include span(8 of 12);
+	}
+}
+
+.feed-card {
+	position: relative;
+	display: block;
+	@extend %clearfix;
+	margin-top: 2em;
+}
+.feed-card__image-wrapper {
+	@include breakpoint(large-only) {
+		@include span(4 of 8);
+	}
+	@include breakpoint(medium-small) {
+		@include span(4 of 12);
+	}
+}
+
+.feed-card__content {
+	.feed-card__image-wrapper + & {
+		@include breakpoint(large-only) {
+			@include span(4 of 8 last);
+		}
+		@include breakpoint(medium-small) {
+			@include span(8 of 12 last);
+		}
+	}
+}
+
+.feed-card__title {
+	padding-top: 0.5em;
+}
+
+.feed-card__category {
+	@include kicker();
+}
+
+.feed-card__title {
+	@include font-scale(headline, 0.5);
+}
+
+.feed-card__subhead {
+	margin-top: 1rem;
+	@include font-scale(textSans, 3);
+}

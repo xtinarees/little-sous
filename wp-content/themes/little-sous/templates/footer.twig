@@ -1,0 +1,30 @@
+{# LINKS #}
+{% include 'templates/w_links.twig' %}
+
+<footer class="footer">
+    <div class="container">
+        {{ icons.icon('logo-cook', 'footer__logo') }}
+       <ul class="footer-nav__items">
+            {% for item in menu_footer.get_items %}
+                <li class="footer-nav__item">
+                    <a class="footer-nav__link" href="{{item.link}}">
+                        {{item.title}}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="footer__social-links">
+        {% for link in options.social_links %}
+            <a class="footer__social-link" href="{{ link.link }}">
+                {{ icons.icon(link.type, 'icon--white footer__social-icon') }}
+            </a>
+        {% endfor %}
+        </div>
+
+        <div class="footer__copywrite">
+            &copy; {{ current_year }} {{ options.footer_text }}
+        </div>
+    </div>
+</footer>
+

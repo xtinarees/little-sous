@@ -1,0 +1,58 @@
+<header class="header js-header">
+	<div class="header__top">
+		{{ icons.icon('logo-top', 'header__logo-image header__logo-image--top is-hidden--medium-small') }}
+
+		<div class="header__top__bottom">
+			<div class="header__newsletter">
+			{{ macros.email_form('header__newsletter-signup') }}
+			</div>
+
+			{{ icons.icon('menu', 'icon--white header__menu-mobile js-menu is-hidden--large-only') }}
+			{{ icons.icon('close', 'icon--white header__menu-mobile js-menu is-hidden--medium-small is-hidden--large-only') }}
+
+			<a class="header__logo" href="/">
+			{{ icons.icon('logo-bottom', 'header__logo-image header__logo-image--bottom') }}
+			</a>
+
+			<div class="header__links">
+				{% for link in options.social_links %}
+					<a class="header__social-link" href="{{ link.link }}">
+						{{ icons.icon(link.type, 'icon--navy header__social-icon') }}
+					</a>
+				{% endfor %}
+				<div class="header__search js-search">
+					<form role="search" method="get" id="searchform" class="search" action="{{ site.url }}">
+						<input class="js-search-input search__input" value="{% if fn('get_search_query') %}{{ fn('get_search_query') }}{% endif %}" name="s" id="s" type="text"><input class="js-search-submit search__submit" id="searchsubmit" value="Search" type="submit">
+					</form>
+					{{ icons.icon('search', 'js-search-icon icon--orange header__search-icon') }}
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="nav js-nav is-hidden--medium-small">
+		<div class="container nav-inner">
+			<a href="/">{{ icons.icon('logo-cook-2', 'nav__logo is-hidden--medium-small') }}</a>
+			{% for item in menu.get_items %}
+				<a class="nav__item" href="{{item.link}}">
+					{{ icons.icon(fn('LittleSous::icon_match', item.title), 'icon--white nav__item-icon') }}
+					{{ item.title }}
+				</a>
+			{% endfor %}
+
+			<div class="is-hidden--large-only header__newsletter-signup">
+				<!--[if lte IE 8]>
+				<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+				<![endif]-->
+				<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+				<script>
+				  hbspt.forms.create({
+					portalId: "4339240",
+					formId: "dd4f4202-c758-452a-8d45-fb52f29fad40",
+					css: ""
+				});
+				</script>
+			</div>
+
+		</div>
+	</nav>
+</header>

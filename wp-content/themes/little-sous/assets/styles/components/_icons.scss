@@ -1,0 +1,15 @@
+.icon--white {
+	@include svg-color($color__white);
+}
+
+.icon--teal {
+	@include svg-color($color__teal);
+}
+
+.icon--navy {
+	@include svg-color($color__navy);
+}
+
+.icon--orange {
+	@include svg-color($color__orange);
+}

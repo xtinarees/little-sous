@@ -1,0 +1,35 @@
+.tabz-labels {
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.tabz-label {
+	position: relative;
+	border: 1px solid #CCCCCC;
+	border-bottom: 0;
+	border-radius: 3px 3px 0 0;
+	padding: 0.5em 0.9em;
+	margin: 0 0.2em;
+	display: inline-block;
+	background-color: #F1F1F1;
+	cursor: pointer;
+}
+
+.tabz-label:hover {
+	background-color: white;
+}
+
+.tabz-label.is-active {
+	background-color: white;
+}
+
+.tabz-label.is-active:after {
+	content: '';
+	width: 100%;
+	left: 0;
+	bottom: -2px;
+	height: 3px;
+	background-color: white;
+	position: absolute;
+}
+
+

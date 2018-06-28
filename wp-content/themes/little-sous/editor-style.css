@@ -1,0 +1,33 @@
+body {
+    font-size: 14px;
+}
+
+h2, h3, h4, h5 {
+    font-weight: bold;
+}
+
+h2 { 
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+h3 { 
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+h4 { 
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+h6 { color: #ff007f; }
+
+ul, ol { margin-left: 1em; }
+
+p, ul, ol { padding-bottom: 1.2em; }

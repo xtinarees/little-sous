@@ -1,0 +1,9 @@
+<a class="story__social-button button--facebook" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{ post.link|url_encode }}&title={{ post.title|url_encode }}" rel="external nofollow" >
+	{{ icons.icon('facebook') }}
+</a>
+<a class="story__social-button button--twitter" target="_blank" href="https://twitter.com/intent/tweet?text={{ post.title|url_encode }}&url={{ post.link|url_encode}}" rel="external nofollow" >
+	{{ icons.icon('twitter') }}
+</a>
+<a class="story__social-button button--pinterest" target="_blank" href="http://pinterest.com/pin/create/button/?url={{ post.link|url_encode }}&media={{ TimberImage(post.thumbnail).src('wide_large')|url_encode }}&description={{ post.title|url_encode }}" rel="external nofollow" >
+	{{ icons.icon('pinterest') }}
+</a>

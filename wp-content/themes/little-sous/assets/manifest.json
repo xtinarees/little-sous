@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "main.js": {
+      "files": [
+        "scripts/ajax-scripts.js",
+        "scripts/LS.ads.js",
+        "scripts/main.js"
+      ],
+      "main": true
+    },
+    "main.css": {
+      "files": [
+        "styles/main.scss"
+      ],
+      "main": true
+    },
+    "customizer.js": {
+      "files": [
+        "scripts/customizer.js"
+      ]
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    }
+  },
+  "config": {
+    "devUrl": "http://example.dev"
+  }
+}

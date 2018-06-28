@@ -1,0 +1,15 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+	<header class="page__header" {{ macros.background_image(TimberImage(post.thumbnail).src('wide_large')) }}>
+		<h1 class="page__title">{{ post.title }}</h1>
+	</header>
+
+	<div class="container">
+		<div class="page__content">
+			{{ post.content }}
+		</div>
+	</div>
+
+{% endblock %}

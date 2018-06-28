@@ -1,0 +1,20 @@
+{% import "templates/macros.twig" as macros %}
+{% import "templates/icons.twig" as icons %}
+
+<div class="container">
+	<div class="feed-cards">
+	{% if posts %}
+	{% for post in posts %}
+		{{ macros.feed_card(post) }}
+	{% endfor %}
+	{% endif %}
+	</div>
+
+	<div class="sidebar">
+		{{ macros.adunit('vertical', false, false, false, 'feed-cards-sidebar-adunit') }}
+	</div>
+</div>
+
+{# {{ macros.adunit('horizontal', false, false, false, 'feed-cards-adunit') }} #}
+
+

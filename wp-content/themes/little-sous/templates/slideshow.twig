@@ -1,0 +1,70 @@
+{% import "templates/macros.twig" as macros %}
+{% import "templates/icons.twig" as icons %}
+
+<div class="slideshow-wrapper js-slideshow">
+<div class="slideshow">
+
+	<div class="slideshow__header">
+		<a href="/">{{ icons.icon('logo-cook-3', 'icon--white slideshow__logo') }}</a>
+		<h1 class="slideshow__title">{{ post.title }}</h1>
+		{{ icons.icon('close', 'icon--white slideshow__close js-slideshow-close') }}
+	</div>
+
+	<div class="slideshow__inner">
+
+		<div class="slides-wrapper">
+			<div class="js-slides-left js-slides-arrow">
+				{{ icons.icon('chevron-left', 'slides__arrow slides__arrow-left') }}
+			</div>
+			<div class="slides js-slides">
+			{% for slide in post.get_field('slideshow') %}
+				<div class="slide">
+					<img class="slide__image" data-lazy="{{ TimberImage(slide.image).src('slideshow') }}">
+				</div>
+				{% if loop.index % 4 == 0 %}
+				<div class="slide slide--adunit">
+					{{ macros.adunit('slideshow') }}
+				</div>
+				{% endif %}
+			{% endfor %}
+			</div>
+			<div class="js-slides-right js-slides-arrow">
+				{{ icons.icon('chevron-right', 'slides__arrow slides__arrow-right') }}
+			</div>
+		</div>
+
+		<div class="slides-sidebar js-slides-sidebar">
+			{% for slide in post.get_field('slideshow') %}
+				<div class="">
+					<p class="slides-sidebar__count"><span class="slides-sidebar__count__current">{{ loop.index }}</span> / {{ loop.length }}</p>
+					{% if slide.caption %}
+						<div class="slides-sidebar__caption">{{ slide.caption }}</div>
+					{% endif %}
+					{% if TimberImage(slide.image).credit %}
+						<p class="slides-sidebar__credit">Photo By {{ TimberImage(slide.image).credit }}</p>
+					{% endif %}
+				</div>
+				{% if loop.index % 4 == 0 %}
+				<div>
+					<p class="slides-sidebar__caption">Advertisement</p>
+				</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+	</div>
+
+	<div class="slides-thumbnails js-slides-thumbnails">
+		{% for slide in post.get_field('slideshow') %}
+			<div class="slides-thumbnail">
+				<img class="image" src="{{ TimberImage(slide.image).src('square_medium') }}">
+			</div>
+			{% if loop.index % 4 == 0 %}
+			<div class="slides-thumbnail-ad"></div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+</div>
+</div>
+

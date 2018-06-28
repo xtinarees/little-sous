@@ -1,0 +1,14 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="page__title">404</h1>
+        <div class="page__content">
+            {{ __('Sorry, but the page you were trying to view does not exist.', 'sage') }}
+        </div>
+    </div>
+
+    {# {{ function('get_search_form') }} #}
+
+{% endblock %}

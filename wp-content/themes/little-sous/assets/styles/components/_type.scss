@@ -1,0 +1,13 @@
+.kicker-orange {
+	@include font-scale(kicker, 1, $caps: true);
+	@include hover-orange();
+}
+
+// .byline {
+// 	@include font-scale(textSans, 1, $caps: true);
+// }
+
+.byline {
+	margin-top: 0.8em;
+	@include font-scale(textSans, 2);
+}

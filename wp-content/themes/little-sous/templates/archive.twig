@@ -1,0 +1,90 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+	<header class="archive-header">
+		<div class="container">
+			{% if header %}
+				{% if header.profile_picture_override %}
+					<img class="archive-thumbnail" src="{{ TimberImage(header.profile_picture_override).src('square_small') }}">
+				{% elseif header.icon() %}
+					{{ icons.icon(header.icon(), 'icon--teal') }}
+				{% elseif fn('is_post_type_archive', 'recipe') %}
+					{{ icons.icon( 'utensils', 'icon--teal') }}
+				{% endif %}
+				<h1 class="archive-title">
+					{% if header.title %}
+						{{ header.title }}
+					{% elseif header.display_name %}
+						{{ header.display_name }}
+					{% else %}
+						Recipes
+					{% endif %}
+				</h1>
+				<p class="archive-subtitle">
+					{% if header.job_title %}
+						{{ header.job_title }}
+					{% else %}
+						{{ header.description }}
+					{% endif %}
+				</p>
+			{% elseif fn('is_search') %}
+				<p class="archive-pretitle">Search results for:</p> 
+				<h1 class="archive-title">{{ the_query.query.s }}</h1>
+			{% endif %}
+		</div>
+	</header>
+
+
+	{% if header.menu %}
+	<div class="container">
+		<ul class="menu">
+
+			<li class="menu__item {% if page.title == header.title %}is-active{% endif %}">
+				<a href="{{ header.link }}">
+					All {{ header.title }}
+				</a>
+			</li>
+
+			{% for item in header.menu %}
+				{% if item.category %}
+				{% set item = TimberTerm(item.category) %}
+				{% endif %}
+
+				<li class="menu__item {% if page.title == item.name %}is-active{% endif %}"><a href="{{ item.link }}">
+					{{ item.name }}
+				</a></li>
+			{% endfor %}
+
+		</ul>
+	</div>
+	{% endif %}
+
+	{% if featured_post %}
+
+		<div class="container">
+			{{ macros.feed_card_big(featured_post) }}
+		</div>
+
+		{{ macros.adunit('horizontal') }}
+
+		{% include 'templates/w_email.twig' %}
+
+	{% endif %}
+
+	{% include 'templates/archive-repeater.twig' %}
+
+	{# {{ macros.adunit('horizontal') }} #}
+
+	{% if the_query and pagination.next.link %}
+	<div class="load-more-button-wrapper js-load-more-button-wrapper js-stickyStop">
+		<nav id="nav-below">
+				<a href="{{pagination.next.link}}" class="button--navy js-load-more next {{pagination.next.link|length ? '' : 'invisible'}}">Load More</a>
+				{{ function('dmag_load_more_posts_data', 'nav-below', the_query, page.id) }}
+		</nav>
+	</div>
+	{% endif %}
+
+	{% include 'templates/w_message.twig' %}
+
+{% endblock %}

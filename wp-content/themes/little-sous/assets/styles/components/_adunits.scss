@@ -1,0 +1,72 @@
+@mixin adunit-background() {
+	background-image: url(/wp-content/themes/little-sous/dist/images/ad-background.png);
+	margin-left: $full-width-margin;
+	margin-right: $full-width-margin;
+	background-repeat: repeat;
+	padding: 1.5em;
+	text-align: center;
+}
+
+.adunit--horizontal {
+	@include adunit-background;
+}
+
+.adunit--vertical {
+	@include breakpoint(medium-small) {
+		@include adunit-background;
+	}
+}
+
+.slide--adunit {
+	background-image: url(/wp-content/themes/little-sous/dist/images/ad-background-dark.png);
+}
+
+.adunit--slideshow {
+	@include center-absolute;
+}
+
+
+// for sticky horizontal ad on mobile
+.adunit-wrapper {
+	@include breakpoint(small-only) {
+		position: fixed;
+		z-index: 1000;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+}
+
+.adunit-close {
+	position: absolute;
+	right: 0;
+	bottom: 100%;
+	background-color: $color__gray--lighter;
+	padding: 0.4em;
+	border: 1px solid $color__gray--medium;
+	cursor: pointer;
+	@include breakpoint(large-medium) {
+		display: none;
+	}
+}
+
+.adunit--horizontal.adunit--top {
+	@include breakpoint(small-only) {
+		width: 100%;
+		padding: 0.5em;
+		border-top: 1px solid $color__gray--medium;
+	}
+}
+
+
+.feed-cards-adunit {
+	margin-top: 2em;
+}
+
+.feed-cards-sidebar-adunit {
+	margin-top: 2em;
+}
+
+.sidebar-adunit {
+	margin-top: 2em;
+}

@@ -1,0 +1,70 @@
+<div class="container">
+
+	<div class="recipe__header">
+		{{ macros.infos(recipe, false) }}
+
+		<h1 class="recipe__title">{{ recipe.title }}</h1>
+
+		<div class="recipe__content">
+			{{ recipe.content }}
+		</div>
+	</div>
+
+	<div class="recipe__image">
+		{% if recipe.hero_image %}
+		{{ macros.hero_image(recipe) }}
+		{% endif %}
+
+		<ul class="recipe__infos">
+			{% if recipe.h_time_string %}
+				<li class="recipe__info">
+					<span class="recipe__info__title">Total Time:</span>
+					<span class="recipe__info__text">{{ recipe.h_time_string }}</span>
+				</li>
+			{% endif %}
+			{% if recipe.yield %}
+				<li class="recipe__info">
+					<span class="recipe__info__title">Yield:</span>
+					<span class="recipe__info__text">{{ recipe.yield }}</span>
+				</li>
+			{% endif %}
+		</ul>
+
+		{% if recipe.facets() %}
+			<h4 class="tags-title">Tags:</h4>
+			<ul class="tags">
+				{% for facet in recipe.facets() %}
+					<li class="tag">{{ facet.label }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+
+</div>
+
+
+<div class="container recipe__body">
+	<div class="recipe__block recipe__ingredients">
+		<h2 class="recipe__heading">Ingredients:</h2>
+		{% for ingredient_group in recipe.get_field('ingredient_group') %}
+			<div class="ingredients-group">
+				<h5 class="ingredients-group__title">{{ ingredient_group.title }}</h5>
+				<ul class="ingredients">
+				{% for ingredient in ingredient_group.ingredients %}
+					<li class="ingredient">{{ ingredient.h_string }}</li>
+				{% endfor %}
+				</ul>
+			</div>
+		{% endfor %}
+	</div>
+
+
+	<div class="recipe__block recipe__steps">
+		<h2 class="recipe__heading">Steps:</h2>
+		<ol class="steps">
+			{% for step in recipe.get_field('steps') %}
+				{{ macros.step(step, loop) }}
+			{% endfor %}
+		</ol>
+	</div>
+</div>

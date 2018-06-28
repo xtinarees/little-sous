@@ -1,0 +1,124 @@
+$block-icon__width: 80px;
+
+.block__header {
+	margin-top: gutter(6);
+	width: 100%;
+	clear: both;
+	// margin-top: gutter(4);
+	position: relative;
+	margin-bottom: gutter(10);
+	padding-bottom: 0.2em;
+
+	@include breakpoint(large-only) {
+		border-bottom: 1.5px solid $color__navy;
+	}
+	@include breakpoint(medium-small) {
+		text-align: center;
+	}
+}
+
+.block__icon {
+	max-width: $block-icon__width;
+	height: auto;
+	z-index: 2;
+
+	@include breakpoint(large-only) {
+		vertical-align: middle;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.block__icon--background {
+	stroke-width: 10;
+	stroke-linecap: round;
+	stroke-dasharray: 0;
+	z-index: 1;
+	@include breakpoint(medium-small) {
+		display: none;
+	}
+}
+
+.block__content {
+	position: relative;
+	@include breakpoint(large-only) {
+		vertical-align: middle;
+		margin-left: $block-icon__width;
+		display: inline-block;
+	}
+}
+
+.block__title {
+	@include font-scale(accent, 2);
+	@include breakpoint(large-only) {
+		padding-left: 0.2em;
+		padding-right: 0.3em;
+		display: inline-block;
+	}
+
+	a { @include hover-opacity; }
+}
+
+.block__subtitle {
+	@include font-scale(textSans, 4);
+	display: inline-block;
+}
+
+
+.block__header--teal-navy-orange {
+	.block__icon:not(.block__icon--background) { @include svg-color($color__teal); }
+	.block__icon--background { stroke: $color__white; }
+}
+
+
+.block__header--white-navy-white {
+	.block__icon:not(.block__icon--background) { @include svg-color($color__white); }
+	.block__icon--background { stroke: $color__teal; }
+}
+
+.block__header--white-teal {
+	.block__icon:not(.block__icon--background) { @include svg-color($color__white); }
+	.block__icon--background { stroke: $color__navy; }
+	color: $color__teal;
+	border-color: $color__white;
+}
+
+.block__header .icon--instagram {
+	left: 15px;
+	width: 60px;
+	height: auto;
+}
+
+.block-video {
+	background-color: $color__navy;
+	padding-bottom: gutter(6);
+	padding-top: 1px;
+}
+
+
+.block-cards,
+.block-accent-cards,
+.block-instagrams {
+	margin-bottom: gutter(6);
+}
+
+.block-mini-cards {
+	background-color: $color__teal;
+	padding-top: gutter(2.6);
+	margin-top: -#{gutter(2.6)};
+}
+
+.block-cards__button-wrapper { 
+	margin-top: gutter(8);
+	text-align: center;
+	width: 100%;
+	display: block;
+}
+
+.block-cards__button {
+	display: block;
+	clear: both;
+	display: inline-block;
+}

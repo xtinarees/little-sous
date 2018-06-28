@@ -1,0 +1,34 @@
+{% import "templates/macros.twig" as macros %}
+
+<section class="section  section--links">
+    <div class="container">
+
+        {{ macros.sectionHeader( options.links_header, options.links_text )}}
+
+        <ul class="links">
+            {% for link in options.links %}
+                <li class="link">
+
+                    {% if link.link %}
+                        {% if link.icon == 'phone' %}
+                            <a href="tel:{{ link.link }}">
+                        {% elseif link.icon == 'mail' %}
+                            <a href="mailto:{{ link.link }}">
+                        {% else %}
+                            <a href="{{ link.link }}">
+                        {% endif %}
+                    {% endif %}
+
+                        <i class="link__icon icon-{{ link.icon }}"></i>
+                        <p class="link__text">{{ link.text }}</p>
+
+                    {% if link.link %}
+                    </a>
+                    {% endif %}
+
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>

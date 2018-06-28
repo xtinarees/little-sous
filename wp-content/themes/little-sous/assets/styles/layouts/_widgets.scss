@@ -1,0 +1,136 @@
+/*------------------------------------
+#NEWSLETTER
+* uses gravity forms
+------------------------------------*/
+$newsletter-form__height: 35px;
+
+// required star
+
+.w_newsletter-signup,
+.header__newsletter-signup,
+.header__newsletter-signup__form-wrapper {
+	.hs_email label { display: none !important; }
+}
+
+.hs-form { position: relative; }
+.hs_error_rollup {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	display: block;
+	margin-top: 0.2em;
+	@include font-scale(textSans, 2);
+}
+.submitted-message { @include font-scale(textSans, 2); }
+
+.w_newsletter-signup {
+	background-color: $color__navy;
+	width: 100%;
+	padding: gutter(8);
+	text-align: center;
+	color: $color__white;
+	@include breakpoint(small-only) {
+		padding: 2em 0;
+	}
+}
+
+.w_newsletter-signup__title {
+	@include font-scale(headline, 1);
+}
+
+.w_newsletter-signup__text {
+	@include font-scale(textSans, 4);
+}
+
+.w_newsletter-signup__form-wrapper {
+	.hs-form {
+		padding-top: 2rem;
+		display: flex;
+		max-width: 500px;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		@include breakpoint(small-only) {
+			flex-direction: column;
+		}
+	}
+
+	.hs_email{
+		flex-grow: 1;
+		@include breakpoint(large-medium) {
+			margin-right: 1em;
+		}
+		input {
+			@include form-input-resets;
+			height: $newsletter-form__height;
+			line-height: $newsletter-form__height;
+			border-radius: 0;
+			width: 100%;
+		}
+	}
+
+
+	.hs_submit {
+		input {
+			width: 100%;
+			@include form-submit-resets;
+			height: $newsletter-form__height;
+			line-height: $newsletter-form__height;
+			padding: 0 2em;
+			@include breakpoint(small-only) {
+				display: inline-block;
+				margin-top: 1em;
+			}
+		}
+	}
+}
+
+
+
+
+
+/*------------------------------------
+#MESSAGE
+------------------------------------*/
+.w_message {
+	position: relative;
+	text-align: center;
+	color: $color__white;
+	background-color: $color__teal;
+	padding: gutter(6) 0;
+	margin-top: gutter(6);
+	z-index: -2;
+}
+
+.w_message__inner {
+	max-width: 800px;
+	position:relative;
+	@include center-block;
+	@include shadow-border($color__white);
+}
+
+.w_message__kicker {
+	@include font-scale(kicker, 1, $caps: true);
+}
+
+.w_message__image {
+	display: block;
+}
+
+.w_message__content {
+	@include center-absolute;
+}
+
+.w_message__title {
+	@include font-scale(accent, 2);
+	margin-top: 0.5rem;
+}
+
+.w_message__text {
+	margin-top: 0.5em;
+	@include font-scale(textSans, 4);
+}
+
+.w_message__button {
+	margin-top: 2em;
+}

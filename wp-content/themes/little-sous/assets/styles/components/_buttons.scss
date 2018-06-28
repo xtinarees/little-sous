@@ -1,0 +1,28 @@
+@mixin button($color1, $color2) {
+    @include font-scale(kicker, 1, $caps: true);
+    padding: 1.5em 3em;
+    background-color: $color1;
+    color: $color2;
+    opacity: 1;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    @include transition(background-color);
+    &:hover {
+        background-color: darken($color1, 8%);
+        @include transition(background-color);
+    }
+
+    @include breakpoint(small-only) {
+        width: 100%;
+    }
+}
+
+.button--orange {
+    @include button($color__orange, $color__white);
+}
+
+.button--navy {
+    @include button($color__navy, $color__white);
+}

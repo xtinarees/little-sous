@@ -1,0 +1,37 @@
+/*------------------------------------
+#GRAVITY FORMS STYLING
+------------------------------------*/
+.gform_description {
+	@include font-scale(headline, 0.5);
+}
+
+.gform_body {
+	@include font(textSans);
+	font-size: 17px;
+}
+
+.gform_wrapper label.gfield_label {
+	@include font-scale(textSans, 1, $no-font: true, $caps: true);
+	font-weight: 600;
+}
+
+
+.gform_wrapper .gform_footer input.button,
+.gform_wrapper .gform_footer input[type="submit"],
+.gform_wrapper .gform_page_footer input.button,
+.gform_wrapper .gform_page_footer input[type="submit"] {
+	background-color: $color__orange;
+	color: $color__white;
+	@include font-scale(kicker, 2, $caps: true);
+	padding: 1em 3em;
+	border: 0;
+	box-shadow: 0;
+	text-shadow: 0;
+	cursor: pointer;
+	@include transition(background-color);
+
+	&:hover {
+		background-color: $color__orange--dark;
+		@include transition(background-color);
+	}
+}

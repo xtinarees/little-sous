@@ -1,0 +1,47 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+
+<div class="home-intro container">
+	<section class="block-feature">
+		{{ macros.feature(featured_post, true) }}
+	</section>
+</div>
+{# Most Popular #}
+{# {% if fn('wpp_get_mostpopular') != null %} #}
+	<section class="block-mini-cards">
+		<div class="container">
+			{{ macros.block_header('Trending', 'The most popular stories from the week', 'fire', 'white-navy-white') }}
+			{{ fn( 'wpp_get_mostpopular', 'limit=3 & post_type="post"' ) }}
+		</div>
+	</section>
+{# {% endif %} #}
+
+
+{{ macros.adunit('horizontal') }}
+
+{% include 'templates/w_email.twig' %}
+
+{{ macros.cards_block(recipes) }}
+{{ macros.cards_block(kitchen_academy) }}
+
+{% if video %}
+<section class="block-video">
+	<div class="container">
+	{{ macros.block_header(video.title, false, video.icon, 'white-teal', video.link) }}
+	{{ macros.feature(video.featured, false, true)}}
+	</div>
+</section>
+{% endif %}
+
+{{ macros.adunit('horizontal') }}
+{{ macros.cards_block(posts_1) }}
+{{ macros.cards_block(posts_2) }}
+{{ macros.cards_block(instagrams) }}
+
+
+{% include 'templates/w_message.twig' %}
+
+
+{% endblock %}

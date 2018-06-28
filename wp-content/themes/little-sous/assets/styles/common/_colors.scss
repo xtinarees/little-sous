@@ -1,0 +1,40 @@
+// Little Sous Brand Colors:
+$color__teal: #71CAC8;
+$color__teal--dark: darken($color__teal, 20%);
+$color__navy: #1A2F55;
+$color__orange: #f05f32;
+$color__orange--dark: darken($color__orange, 10%);
+$color__white: white;
+$color__black: black;
+
+
+// Grays:
+$color__gray--darkest: #1a1a1a;
+$color__gray--darker: #333333;
+$color__gray--dark: #999999;
+$color__gray--medium-dark: #c6c6c6;
+$color__gray--medium: #e6e6e6;
+$color__gray--light: #f2f2f2; 
+$color__gray--lighter: #fbfbfb;
+
+
+$color__magenta: #ff007f;
+$color__cyan: #00a3ff;
+$color__brown: #462f28;
+
+// $color__purple: #9b0082;
+$color__purple: #83007e;
+
+$color__gray--light: #d3d3d3;
+$color__gray--lighter: #f2f2f2;
+
+$color__primary: $color__magenta;
+$color__primary--dark: darken(#9b0082, 15%);
+$color__secondary: $color__brown;
+$color__accent: $color__cyan;
+$color__basic: white;
+$color__basic--rgba: rgba(255, 255, 255, 0.8);
+
+$color__product1: $color__cyan;
+$color__product2: $color__orange;
+$color__product3: $color__purple;

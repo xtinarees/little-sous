@@ -1,0 +1,71 @@
+$miller-disp: 'miller-display', 'georgia', serif;
+$miller: 'miller-text', 'georgia', serif;
+$gibson: 'canada-type-gibson', 'helvetica', sans-serif;
+
+$fs-breakpoint: 670px;
+
+$font: (
+    headline: (
+        family: $miller-disp,
+        weight: 400,
+    ),
+    kicker: (
+        family: $gibson,
+        weight: 700,
+    ),
+    textSans: (
+        family: $gibson,
+        weight: 400,
+    ),
+    bodyCopy: (
+        family: $miller,
+        weight: 400,
+    ),
+    accent: (
+        family: $gibson,
+        weight: 600,
+    ),
+    headlineSans: (
+        family: $gibson,
+        weight: 200,
+    )
+);
+
+
+$font-scale: (
+    headline: (
+        0.5: (font-size: 29px, line-height: (1.2, 1), letter-spacing: (null, null)),
+        0.75: (font-size: 38px, line-height: (1.2, 1), letter-spacing: (null, null), responsive-level: 0.5),
+        1: (font-size: 48px, line-height: (1.2, 1), letter-spacing: (null, null), responsive-level: 0.75),
+        2: (font-size: 60px, line-height: (1.1, 1), letter-spacing: (null, null), responsive-level: 0.75),
+    ),
+    kicker: (
+        1: (font-size: 11px, line-height: (1, 1), letter-spacing: (null, 0.15em)),
+        2: (font-size: 12px, line-height: (1, 1), letter-spacing: (null, 0.15em)),
+        3: (font-size: 14px, line-height: (1, 1), letter-spacing: (0.03em, 0.1em)),
+        4: (font-size: 18px, line-height: (1, 1), letter-spacing: (0.03em, null)),
+    ),
+    textSans: (
+        1: (font-size: 11px, line-height: (1.3, 1), letter-spacing: (null, 0.1em)),
+        2: (font-size: 14px, line-height: (1.3, 1), letter-spacing: (null, 0.1em)),
+        3: (font-size: 18px, line-height: (1.4, 1), letter-spacing: (null, null)),
+        4: (font-size: 21px, line-height: (1.3, 1), letter-spacing: (null, null), responsive-level: 3),
+        5: (font-size: 32px, line-height: (1, 1), letter-spacing: (null, null)),
+    ),
+    bodyCopy: (
+        1: (font-size: 21px, line-height: (1.5, 1), letter-spacing: (null, null)),
+    ),
+    accent: (
+        0.5: (font-size: 15px, line-height: (1.3, 1), letter-spacing: (null, null)),
+        1: (font-size: 18px, line-height: (1.2, 1), letter-spacing: (null, null)),
+        2: (font-size: 36px, line-height: (1, 1), letter-spacing: (null, null)),
+        2.5: (font-size: 48px, line-height: (1.2, 1), letter-spacing: (null, null)),
+        3: (font-size: 60px, line-height: (1.2, 1), letter-spacing: (null, null), responsive-level: 2.5),
+    )
+) !default;
+
+
+
+
+
+

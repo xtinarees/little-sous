@@ -1,0 +1,39 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+	<div class="js-social-buttons story__social-buttons story__social-buttons--large-screen">
+	{% include 'templates/single-social-buttons.twig' %}
+	</div>
+
+	{% block singlerecipe %}{% endblock %}
+	{% block singlepost %}{% endblock %}
+
+	<div class="container story__social-buttons--small-screen">
+		<div class="story__social-buttons">
+		{% include 'templates/single-social-buttons.twig' %}
+		</div>
+	</div>
+
+	{% include 'templates/w_email.twig' %}
+
+	{% if post.slideshow %}
+		{{ function('dmag_load_slideshow_data') }}
+		{# {% include 'templates/slideshow.twig' %} #}
+	{% endif %}
+
+	{#
+	{% if related %}
+	<div class="container related">
+		<h2 class="related__title">More From {{ post.kicker() }}</h2>
+		<div>
+		{% for item in related %}
+			{{ macros.card(item) }}
+		{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+	#}
+
+{% endblock %}
+

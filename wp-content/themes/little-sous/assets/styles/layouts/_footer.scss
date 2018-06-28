@@ -1,0 +1,38 @@
+.footer {
+    background: $color__navy;
+    color: $color__basic;
+    padding: gutter(12) 0;
+    text-align: center;
+}
+.footer__logo {
+    max-width: 140px;
+}
+
+.footer-nav__items {
+    width: 100%;
+}
+
+.footer-nav__item {
+    display: inline-block;
+    padding: 0 1em;
+    vertical-align: middle;
+    @include font-scale(kicker, 1, $caps: true);
+    
+}
+
+.footer-nav__link { text-align: center; }
+
+.footer__social-icon {
+    width: 15px;
+    height: auto;
+    margin: 1em;
+    position: relative;
+}
+
+.footer__copywrite {
+    padding-top: 2em;
+    max-width: 550px;
+    @include center-block;
+    @include font-scale(textSans, 1);
+    p { display: inline; }
+}

@@ -1,0 +1,23 @@
+{% if options.mssg_title %}
+<section class="w_message">
+	<div class="w_message__inner">
+		<img class="w_message__image lazyload" data-src="{{ TimberImage(options.mssg_image).src('wide_large') }}">
+		<div class="w_message__content">
+			{% if options.mssg_kicker %}
+			<p class="w_message__kicker">{{ options.mssg_kicker }}</p>
+			{% endif %}
+			{% if options.mssg_title %}
+			<h5 class="w_message__title">{{ options.mssg_title }}</h5>
+			{% endif %}
+			{% if options.mssg_text %}
+			<div class="w_message__text">{{ options.mssg_text }}</div> 
+			{% endif %}
+			{% if options.mssg_button_text %}
+			<a href="{{ options.mssg_button_link }}" class="button button--orange w_message__button">{{ options.mssg_button_text}}</a>
+			{% endif %}
+		</div>
+	</div>
+</section>
+
+
+{% endif %}

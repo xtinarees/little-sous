@@ -1,0 +1,376 @@
+{% macro byline(field, isClass = true) %}
+	<span {% if isClass %}class="byline"{% endif %}>
+		By
+		{% if field.link %}<a href="{{ field.link }}">{% endif %}
+		{{ field.name }}
+		{% if field.link %}</a>{% endif %}
+	</span>
+{% endmacro %}
+
+
+
+
+
+{% macro kicker(field) %}
+	<span class="kicker">
+		{% if field.link %}<a href="{{ field.link }}">{% endif %}
+			{{ field.name }}
+		{% if field.link %}</a>{% endif %}
+	</span>
+{% endmacro %}
+
+
+
+
+
+{% macro block_header(title, text, iconName, className, link = false) %}
+	{% import "templates/icons.twig" as icons %}
+
+	<div class="block__header block__header--{{ className }}">
+		{% if iconName %}
+			{{ icons.icon(iconName, 'block__icon') }}
+			{{ icons.icon(iconName, 'block__icon block__icon--background') }}
+		{% endif %}
+		<div class="block__content">
+			<h2 class="block__title">{% if link %}<a href="{{ link }}">{% endif %}{{ title }}{% if link %}</a>{% endif %}</h2>
+			{% if text %}
+			<p class="block__subtitle">{{ text }}</p>
+			{% endif %}
+		</div>
+	</div>
+{% endmacro %}
+
+
+
+
+{% macro infos(post, includeDate = true) %}
+	{% import "templates/macros.twig" as macros %}
+
+	<div class="story__infos">
+		{% if post.kicker() %}
+		<span class="story__info kicker-orange">{{ macros.kicker(post.kicker()) }}</span>
+		{% endif %}
+
+		<span class="story__info story__info--default">{{ macros.byline(post.byline(), false) }}</span>
+
+		{% if includeDate %}
+			<span class="story__date story__info story__info--default">{{ post.date }}</span>
+		{% endif %}
+	</div>
+
+{% endmacro %}
+
+
+
+
+
+
+{# SECTION #}
+{% macro sectionHeader(headerField, textField) %}
+	<div class="section__intro">
+		<h2 class="section__header">{{ headerField }}</h2>
+		<div class="section__text">
+			{{ textField }}
+		</div>
+	</div>
+{% endmacro %}
+
+
+
+
+
+{# WIDGET #}
+{% macro widgetHeader(icon, theme) %}
+	<div class="widget__header">
+		<div class="widget__squiggle widget__squiggle--left" style="background-image: url({{ theme.uri }}/dist/images/squiggle.png);"></div>
+		<i class="widget__icon icon-{{ icon }}"></i>
+		 <div class="widget__squiggle widget__squiggle--right" style="background-image: url({{ theme.uri }}/dist/images/squiggle.png);"></div>
+	</div>
+{% endmacro %}
+
+
+
+
+
+{# FEATURE CARD #}
+{% macro feature(field, isTop, isVideo = false) %}
+	{% import "templates/macros.twig" as macros %}
+	{% import "templates/icons.twig" as icons %}
+
+		<article class="feature-card {% if isTop %}feature-card--top{% endif %} js-card hover-card {% if field.is_sponsored %}card--is-sponsored{% endif %}">
+			<a href="{{ field.link }}" class="feature-card__image-wrapper">
+				{% if isVideo %}
+				<div class="feature-card__play-icon">{{ icons.icon('play', 'icon--white') }}</div>
+				{% endif %}
+				<img class="card__image hover-card__image image" src="{{ TimberImage(field.thumbnail).src('wide_large') }}">
+			</a>
+			<div class="feature-card__content-wrapper">
+				<div class="feature-card__content">
+					<h1 class="hover-card__title feature-card__title"><a href="{{ field.link }}">{{ field.title }}</a></h1>
+					{% if field.byline() %}
+						<p class="byline">{{ macros.byline(field.byline()) }}</p>
+					{% endif %}
+					{% if field.subhead %}
+						<p class="feature-card__subhead">{{ field.subhead }}</p>
+					{% endif %}
+				</div>
+				<a class="card__underlay" href="{{ field.link }}"></a>
+			</div>
+		</article>
+
+{% endmacro %}
+
+
+
+
+
+{# CARD #}
+{% macro card(field) %}
+{% import "templates/macros.twig" as macros %}
+	{% import _self as macros %}
+	{% set image = TimberImage(field.thumbnail) %}
+
+	<article class="card js-card hover-card {% if field.is_sponsored %}card--is-sponsored{% endif %}">
+		<a class="card__underlay" href="{{ field.link }}"></a>
+		<a href="{{ field.link }}">
+			<img class="hover-card__image card__image image lazyload" data-srcset="{{ image.src('wide_small') }} 400w, {{ image.src('wide_medium') }} 760w, {{ image.src('wide_large') }} 1200w" sizes="(max-width: 580px) 100vw, (max-width: 1130px) 30vw, 353px" 
+            data-src="{{ image.src('wide_medium') }}" alt="{{ image.title }}">
+		</a>
+		{# <a class="card__category" href="{{ field.kicker().link }}">{{ field.kicker().name }}</a> #}
+		<div class="card__content">
+			<h1 class="hover-card__title card__title"><a href="{{ field.link }}">{{ field.title }}</a></h1>
+			{% if field.byline() %}
+				<p class="byline">{{ macros.byline(field.byline()) }}</p>
+			{% endif %}
+			{# {% if field.subhead %}
+			<p class="card__subhead">{{ field.subhead }}</p>
+			{% endif %} #}
+		</div>
+	</article>
+{% endmacro %}
+
+
+
+{% macro insta_card(field) %}
+	<a href="{{ field.link }}" class="js-card hover-card insta-card" target="_blank">
+		<img class="hover-card__image" src="{{ field.large }}" />
+		<div class="insta-card__content">
+			<span class="insta-card__date">{{ field.time|date("F d") }}</span>
+			<p class="insta-card__description">{{ field.description|excerpt(10) }}</p>
+		</div>
+	</a>
+{% endmacro %}
+
+
+{# ACCENT CARD #}
+{% macro accent_card(field) %}
+	{% import _self as macros %}
+	{% set image = TimberImage(field.thumbnail) %}
+	<article class="accent-card js-card hover-card {% if field.is_sponsored %}card--is-sponsored{% endif %}">
+		<a class="card__underlay" href="{{ field.link }}"></a>
+		<a href="{{ field.link }}" class="accent-card__image-wrapper">
+			<img class="hover-card__image card__image image lazyload" data-srcset="{{ image.src('square_medium') }} 460w, {{ image.src('square_large') }} 800w" sizes="(max-width: 580px) 100vw, (max-width: 1130px) 700px, 450px" 
+            data-src="{{ image.src('square_medium') }}" alt="{{ image.title }}">
+		</a>
+		<div class="accent-card__content">
+			<h1 class="hover-card__title accent-card__title"><a href="{{ field.link }}">{{ field.title }}</a></h1>
+			{% if field.byline() %}
+			{{ macros.byline(field.byline()) }}
+			{% endif %}
+		</div>
+	</article>
+{% endmacro %}
+
+
+
+
+
+
+{# FEED CARD #}
+{% macro feed_card(post) %}
+{% import "templates/macros.twig" as macros %}
+	<article class="feed-card js-card hover-card {% if post.is_sponsored %}card--is-sponsored{% endif %}">
+		<a class="card__underlay" href="{{ post.link }}"></a>
+		{% if post.thumbnail %}
+		<a class="feed-card__image-wrapper" href="{{ post.link }}">
+			<img class="card__image hover-card__image feed-card__image image lazyload" data-src="{{ TimberImage(post.thumbnail).src('wide_small')}}">
+		</a>
+		{% endif %}
+		<div class="feed-card__content">
+			<a class="feed-card__category" href="{{ post.kicker().link }}">{{ post.kicker().name }}</a>
+			<h1 class="hover-card__title feed-card__title"><a href="{{ post.link }}">{{ post.title }}</a></h1>
+			{% if post.byline() %}
+			{{ macros.byline(post.byline()) }}
+			{% endif %}
+			{% if post.subhead %}
+			<p class="feed-card__subhead">{{ post.subhead }}</p>
+			{% endif %}
+		</div>
+	</article>
+{% endmacro %}
+
+
+
+
+
+{# FEED CARD BIG #}
+{% macro feed_card_big(featured_post) %}
+	{% import "templates/macros.twig" as macros %}
+	<article class="feed-card--big js-card hover-card {% if featured_post.is_sponsored %}card--is-sponsored{% endif %}">
+		<a class="card__underlay" href="{{ featured_post.link }}"></a>
+		<a class="feed-card--big__image-wrapper" href="{{ featured_post.link }}">
+			<img class="card__image hover-card__image feed-card--big__image lazyload" data-src="{{ TimberImage(featured_post.thumbnail).src('wide_large') }}">
+		</a>
+		<div class="feed-card--big__content">
+			<a class="feed-card--big__category" href="{{ featured_post.kicker().link }}">{{ featured_post.kicker().name }}</a>
+			<h1 class="hover-card__title feed-card--big__title"><a href="{{ featured_post.link }}">{{ featured_post.title }}</a></h1>
+			{% if featured_post.byline() %}
+				<p class="byline">{{ macros.byline(featured_post.byline()) }}</p>
+			{% endif %}
+			{% if featured_post.subhead %}
+			<p class="feed-card--big__subhead">{{ featured_post.subhead }}</p>
+			{% endif %}
+		</div>
+	</article>
+{% endmacro %}
+
+
+
+
+
+{% macro email_form(classNamePrefix) %}
+	<div class="{{ classNamePrefix }}__form-wrapper">
+		<!--[if lte IE 8]>
+		<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+		<![endif]-->
+		<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+		<script>
+		  hbspt.forms.create({
+			portalId: "4339240",
+			formId: "de9c2126-de98-4e71-9b9d-53b6df8836ce",
+			css: ""
+		});
+		</script>
+	</div>
+{% endmacro %}
+
+
+
+{% macro step(step, loop) %}
+	<li class="step">
+		<div class="step__checkbox js-step-checkbox"></div>
+		<h3 class="step__title">Step {{ loop.index }}</h3>
+		<div class="step__content">
+			<div class="step__text">
+				{{ step.step }}
+			</div>
+			{% if step.tip %}
+			<div class="step__tip">
+				<span class="step__tip-title">Sous Tip:</span>
+				<span class="step__tip-text">{{ step.tip }}</span>
+			</div>
+			{% endif %}
+		</div>
+	</li>
+{% endmacro %}
+
+
+
+{% macro cards_block(field) %}
+	{% import "templates/macros.twig" as macros %}
+
+	<section class="block-{{ field.style }} container">
+		{{ macros.block_header(field.title, field.text, field.icon, 'teal-navy-orange', field.link) }}
+
+		<div class="{{ field.style }}">
+			{% for post in field.posts %}
+				{% if field.style == 'cards' %}
+					{{ macros.card(post) }}
+				{% elseif field.style == 'accent-cards' %}
+					{{ macros.accent_card(post) }}
+				{% elseif field.style == 'instagrams' %}
+					{{ macros.insta_card(post) }}
+				{% endif %}
+			{% endfor %}
+		</div>
+
+		<div class="block-cards__button-wrapper">
+			<a class="block-cards__button button--navy" href="{{ field.link }}">View More</a>
+		</div>
+	</section>
+
+{% endmacro %}
+
+{% macro hero_image(post) %}
+	{% set image = TimberImage(post.hero_image) %}
+	<img class="image lazyload" data-src="{{ image.src('wide_large') }}" alt="{{ image.title }}" />
+
+	<figcaption class="story__image-caption">
+	{% if image.credit %}
+		<span class="story__image-credit">
+			{% if image.credit_link %}
+			<a href="{{ TimberImage(post.thumbnail).credit_link }}">{% endif %}
+				{{ image.credit }}
+			{% if image.credit_link %}
+			</a>{% endif %}
+		</span>
+	{% endif %}
+	{{ image.caption }}
+	</figcaption>
+{% endmacro %}
+
+
+
+
+{% macro background_image(field, lazy = false) %}
+	{% if field and lazy %}
+	data-bg="{{ field }}"
+	{% elseif field %}
+	style="background-image: url({{ field }});"
+	{% endif %}
+{% endmacro %}
+
+
+{% macro slideshow_button(className) %}
+	<button class="js-slideshow-init button--navy {{ className }}">View Gallery</button>
+{% endmacro %}
+
+
+
+{##
+ # #ADUNIT
+ #
+ # @param string dimension - ad dimensions
+ #     horizontal
+ #     vertical
+ # @param string adunit - add naming to data-adunit (in addition to dimension)
+ #     top
+ #     interstitial
+ #     bottom
+ # @param bool sticky - if ad uses scrolltofixed sticky js. ex: ad in the story sidebar
+ # @param string mapping - this is for ads that are hidden on certain screen sizes and not others. This is controlled via mapping and not the adunit itself
+ #     desktop
+ #     slideshow
+ #     mobile_top
+ #     interstitial
+ #     mobile
+ #
+ # @example
+ #     {{ macros.adunit('horizontal', 'top', false, 'top', 'section-adunit') }}
+ #
+ #}
+
+{% macro adunit(dimension, adunit = false, sticky = false, mapping = false, className = '') %}
+	{% import "templates/icons.twig" as icons %}
+
+	{% if adunit == 'top' %}
+		<div class="adunit-wrapper">
+		<div class="adunit-close js-adunit-close">{{ icons.icon('close') }}</div>
+	{% endif %}
+	<div 
+	class="adunit {% if dimension %}adunit--{{ dimension }}{% endif %} {% if mapping %}adunit--{{ mapping }}{% endif %} {% if sticky %}js-sticky{% endif %} {% if className %}{{ className }}{% endif %} {% if adunit %}adunit--{{adunit }}{% endif %}" 
+	data-adunit="{% if dimension %}{{ dimension }}{% endif %}{% if adunit %}_{{ adunit }}{% endif %}" 
+	data-mapping="mapping{% if dimension %}_{{ dimension }}{% endif %}{% if adunit %}_{{ adunit }}{% endif %}{% if mapping %}_{{ mapping }}{% endif %}">
+	</div>
+	{% if adunit == 'top' %}</div>{% endif %}
+{% endmacro %}

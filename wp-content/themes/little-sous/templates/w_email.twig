@@ -1,0 +1,11 @@
+{% if options.newsletter_signup_title %}
+<section class="w_newsletter-signup js-stickyStop">
+	<div class="container">
+		{{ icons.icon('mail', 'icon--white') }}
+		<h5 class="w_newsletter-signup__title">{{ options.newsletter_signup_title }}</h5>
+		<p class="w_newsletter-signup__text">{{ options.newsletter_signup_text }}</p>
+		{{ macros.email_form('w_newsletter-signup') }}
+	</div>
+</section>
+{% endif %}
+

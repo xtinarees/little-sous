@@ -1,0 +1,228 @@
+/*------------------------------------
+#SLIDESHOW
+------------------------------------*/
+$slides-width: 100vh;
+$slides-sidebar-width: 300px;
+$slides-wrapper-width: calc(#{$slides-width} + #{$slides-sidebar-width});
+$slides-height: $slides-width * 2 / 3;
+
+/* body */.is-slideshow-open {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.slideshow-wrapper {
+	position: fixed;
+	background-color: $color__navy;
+	color: $color__white;
+	z-index: 10000000;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	@include breakpoint(medium-small) {
+		overflow-y: auto;
+	}
+}
+
+.slideshow {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	@include breakpoint(medium-small) {
+		height: auto;
+		min-height: 100vh;
+		overflow-y: auto;
+		display: block;
+	}
+}
+
+.slideshow__close {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	@include breakpoint(large-only) {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+	}
+}
+
+
+/// HEADER
+.slideshow__header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: $slides-wrapper-width;
+	padding: 0.3rem 0;
+	@include breakpoint(medium-small) {
+		width: 100%;
+		justify-content: space-between;
+		padding-left: 0.8rem;
+		padding-right: 0.8rem;
+	}
+}
+
+.slideshow__logo {
+	width: 37px;
+	height: auto;
+	margin-right: 10px;
+	height: auto;
+}
+
+.slideshow__title {
+	@include font-scale(headline, 0.5);
+	@include breakpoint(small-only) {
+		font-size: 20px;
+	}
+	@include breakpoint(medium-small) {
+		flex-grow: 1;
+		text-align: left;
+	}
+}
+
+/// MAIN
+.slideshow__inner {
+	display: flex;
+	justify-content: center;
+	flex-grow: 1;
+	@include breakpoint(medium-small) {
+		flex-wrap: wrap;
+	}
+}
+
+.slides-wrapper {
+	width: $slides-width;
+	position: relative;
+	@include breakpoint(medium-small) {
+		width: 100vw;
+	}
+}
+
+.slides__arrow {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10000000;
+	cursor: pointer;
+	@include breakpoint(small-only) {
+		width: 30px;
+		height: 30px;
+	}
+	&:hover {
+		.icon-hover { fill: $color__orange; }
+	}
+}
+
+.slides__arrow-left { left: 15px; }
+.slides__arrow-right { right: 15px; }
+
+.slide {
+	height: $slides-height;
+	width: 100%;
+	position: relative;
+	display: block !important;
+	@include breakpoint(medium-small) {
+		height: 100vw * 2 / 3;
+	}
+}
+
+.slide__image {
+	position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: block;
+}
+
+/// SIDEBAR
+.slides-sidebar {
+	background-color: darken($color__navy, 3%);
+	padding: 2em;
+	width: $slides-sidebar-width;
+	height: $slides-height;
+	flex-grow: 0;
+	flex-shrink: 0;
+	@include font(textSans);
+	@include breakpoint(medium-small) {
+		width: 100vw;
+		padding: 1em;
+		height: auto;
+	}
+}
+
+.slides-sidebar__count {
+	color: $color__gray--dark;
+}
+
+.slides-sidebar__count__current {
+	color: $color__white;
+}
+
+.slides-sidebar__caption {
+	margin-top: 1rem;
+	letter-spacing: 0.03em;
+}
+
+.slides-sidebar__credit {
+	color: $color__gray--dark;
+	margin-top: 1rem;
+	@include font-scale(textSans, 1, $caps: true, $no-font: true);
+}
+
+
+/// THUMBNAILS
+.slides-thumbnails {
+	width: $slides-wrapper-width;
+	padding: 1em 0;
+	// border-top: 1px solid $color__gray--darker;
+	// padding-top: 1rem;
+	@include breakpoint(medium-small) { display: none; }
+	// margin-top: 0.5rem;
+}
+
+.slides-thumbnail {
+	padding: 0 0.5em;
+	cursor: pointer;
+	opacity: 0.5;
+	@include transition(opacity);
+	img { width: 80px; height: auto; }
+	.slick-current & {
+		opacity: 1;
+		@include transition(opacity);
+	}
+}
+
+.slides-thumbnail-ad {
+	width: 0px;
+}
+
+
+/// BUTTONS
+.story__slideshow-button--image {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	@include breakpoint(small-only) {
+		width: auto;
+		right: 10px;
+		bottom: 10px;
+	}
+}
+
+.story__slideshow-button--bottom {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-bottom: 3em;
+}

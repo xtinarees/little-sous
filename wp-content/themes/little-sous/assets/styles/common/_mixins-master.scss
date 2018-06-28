@@ -1,0 +1,250 @@
+@mixin list-unstyled {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@mixin viewportRatio($x, $y) {
+    width: 100vw;
+    height: $y * 100vw / $x;
+    max-width: 1800px;
+    // max-height: 100vh;
+}
+
+@mixin ratio($x, $y, $xWidth) {
+  width: $xWidth;
+  height: ($xWidth * $y) % $x;
+}
+
+@mixin viewportRatio-responsive {
+  @include breakpoint(large-only) {
+      @include viewportRatio(2, 1);
+  }
+  @include breakpoint(medium-only) {
+      @include viewportRatio(1.5, 1);
+  }
+  @include breakpoint(small-only) {
+      @include viewportRatio(1, 1.5);
+  }
+}
+
+@mixin center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
+@mixin absolute-background-image {
+  background-size: cover !important;
+
+  @include breakpoint(large_medium) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  @include breakpoint(small-only) {
+    position: relative;
+    @include viewportRatio(3, 2);
+    @include center-block;
+  }
+}
+
+@mixin absolute-foreground {
+    width: 100%;
+    max-width: $device__large;
+    text-align: left;
+    @include center-absolute;
+}
+
+@mixin trans-in {
+  transition: all 0.2s ease-in;
+}
+
+@mixin trans-out {
+  transition: all 0.2s ease-out;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+$transition-time: 0.3s;
+@mixin transition($prop, $transition-time: $transition-time) {
+  transition: $prop $transition-time ease;
+}
+
+
+@mixin shadow-border($color) {
+  &:before {
+    content: "";
+    background-color: $color;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0.6rem;
+    left: 0.6rem;
+    z-index: -1;
+  }
+}
+
+
+@mixin svg-color($color) {
+  path,
+  g path,
+  circle,
+  rect,
+  polyline,
+  polygon,
+  ellipse,
+  line {
+    &:not([fill="none"]) {
+      fill: $color;
+    }
+  }
+}
+
+@mixin svg-stroke-width($width) {
+    path,
+    g path,
+    circle,
+    rect,
+    polyline,
+    polygon,
+    line { 
+        stroke-width: $width; 
+    }
+}
+
+
+@mixin form-input-resets() {
+  border: 0;
+  box-shadow: none;
+  vertical-align: bottom;
+  padding-left: 1em;
+  @include font-scale(textSans, 2, $no-line-height: true);
+}
+
+@mixin form-submit-resets() {
+    border-radius: 0;
+    box-shadow: none;
+    border: 0;
+    cursor: pointer;
+    background-color: $color__orange;
+    color: $color__white;
+    @include font-scale(kicker, 1, $caps: true, $no-line-height: true);
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color__orange--dark;
+      @include transition(background-color);
+    }
+}
+
+
+@mixin hover-opacity() {
+  opacity: 1;
+  @include transition(opacity);
+  &:hover {
+    opacity: 0.7;
+    @include transition(opacity);
+  }
+}
+
+@mixin hover-orange() {
+  color: $color__orange;
+  @include transition(color);
+  &:hover {
+    color: $color__orange--dark;
+    @include transition(color);
+  }
+}
+
+
+@mixin full-width() {
+  display: block;
+  margin-left: $full-width-margin;
+  margin-right: $full-width-margin;
+  width: 100vw;
+}
+
+@mixin link-underline {
+  background-image: linear-gradient($color__white, $color__white),linear-gradient($color__white, $color__white),linear-gradient($color__orange, $color__orange);
+  background-size: .05em 1px,.05em 1px,1px 1px;
+  background-repeat: no-repeat,no-repeat,repeat-x;
+  background-position: 0 95%,100% 95%,0 95%;
+}
+
+@mixin link-style {
+  @include link-underline;
+  text-shadow: 
+    0.03em 0 $color__white, 
+    -0.03em 0 $color__white,
+    0 0.03em $color__white,
+    0 -0.03em $color__white,
+    0.06em 0 $color__white,
+    -0.06em 0 $color__white,
+    0.09em 0 $color__white,
+    -0.09em 0 $color__white,
+    0.12em 0 $color__white,
+    -0.12em 0 $color__white,
+    0.15em 0 $color__white,
+    -0.15em 0 $color__white;
+  @include transition(color);
+
+  &:hover,
+  a:focus {
+    color: $color__orange;
+    @include transition(color);
+  }
+
+  &:focus {
+    outline: thin dotted;
+  }
+}
+
+@mixin background-overlay-dark() {
+  &:before {
+    background-color: rgba(0, 0, 0, 0.2); //make sure text is legible by adding gray filter over image
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
+
+/*
+ * Wrapper for content that will be horizontally-scrolled
+ */
+@mixin scroller__items() {
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+/*
+ * Horizontally-scrolled content
+ */
+@mixin scroller__item() {
+  float: none;
+  display: inline-block;
+  white-space: normal;
+  vertical-align: top;
+}
+
+

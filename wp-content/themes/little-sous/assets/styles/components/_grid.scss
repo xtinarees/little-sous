@@ -1,0 +1,55 @@
+$susy: (
+    columns: 12,
+    container: $device__large,
+    gutters: 1/1.7,
+    global-box-sizing: border-box,
+    debug: (image: hide),
+);
+
+
+$padding__medium: 25px;
+$padding__small: 15px;
+
+
+/*
+Susy gutter extension
+*/
+@function gutter-times($times) {
+    @return gutter() * $times;
+}
+
+
+@mixin container-padding--small {
+    @include breakpoint(small-only) {
+        padding-left: $padding__small;
+        padding-right: $padding__small;
+    }
+}
+
+@mixin container-padding--medium {
+    @include breakpoint(medium-only) {
+        padding-left: $padding__medium;
+        padding-right: $padding__medium;
+    }
+}
+
+@mixin container-padding {
+    @include container-padding--medium;
+    @include container-padding--small;
+}
+
+@mixin container-margins {
+    @include breakpoint(medium-only) {
+        margin-left: $padding__medium;
+        margin-right: $padding__medium;
+    }
+    @include breakpoint(small-only) {
+        margin-left: $padding__small;
+        margin-right: $padding__small;
+    }
+}
+
+.container {
+    @include container;
+    @include container-padding;
+}

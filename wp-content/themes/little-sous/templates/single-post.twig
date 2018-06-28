@@ -1,0 +1,88 @@
+{% extends "templates/single.twig" %}
+
+{% block singlepost %}
+
+	<div class="container js-stickyParent">
+		<article class="story {% if post.is_sponsored %}story--is-sponsored{% endif %}">
+			{{ macros.infos(post) }}
+			<h1 class="story__title">{{ post.title }}</h1>
+			<p class="story__subhead">{{ post.subhead }}</p>
+
+			<div class="story__main">
+				{% if post.hero_image %}
+					<div class="story__image-wrapper">
+						{{ macros.hero_image(post) }}
+						{% if post.slideshow %}
+						{{ macros.slideshow_button('story__slideshow-button--image') }}
+						{% endif %}
+					</div>
+				{% endif %}
+
+				<div class="story__content">
+					{{ post.content }}
+				</div>
+
+				{% if post.slideshow %}
+				{{ macros.slideshow_button('story__slideshow-button--bottom') }}
+				{% endif %}
+
+				{% if post.terms('tag') %}
+				<div class="story__tags-wrapper">
+					<span class="story__tags__title">Tags:</span>
+					<ul class="story__tags">
+						{% for tag in post.terms('tag') %}
+							<li class="story__tag">
+								<a class="story__tag__link" href="{{ tag.link }}">{{ tag }}</a>{% if not loop.last %},{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% endif %}
+
+			</div>
+
+		</article>
+
+
+		{% if post.steps %}
+		<div class="story__steps">
+			<h2 class="recipe__heading">Instruction</h2>
+			<ol class="steps">
+				{% for step in post.get_field('steps') %}
+					{{ macros.step(step, loop) }}
+				{% endfor %}
+			</ol>
+		</div>
+		{% endif %}
+
+
+
+		<div class="sidebar">
+			{{ macros.adunit('vertical', false, true, false, 'sidebar-adunit') }}
+		</div>
+	</div>
+
+	<div class="js-stickyStop"></div>
+
+	{% if recipes_count == 1 %}
+		<div class="recipe-wrapper">
+		{% for recipe in recipes %}
+			{% include 'templates/recipe.twig' %}
+		{% endfor %}
+		</div>
+	{% elseif recipes %}
+
+	<div class="container story-recipes">
+		{% for item in recipes %}
+			<article class="story-recipe js-card hover-card">
+				<a href="{{ item.link }}">
+					<img class="story-recipe__image hover-card__image lazyload" data-src="{{ TimberImage(item.thumbnail).src('wide_medium') }}">
+					<h1 class="story-recipe__title hover-card__title">{{ item. title }}</h1>
+				</a>
+			</article>
+		{% endfor %}
+	</div>
+	{% endif %}
+
+
+{% endblock %}
