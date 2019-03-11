@@ -1,0 +1,17 @@
+{% import "templates/macros.twig" as macros %}
+
+<div id="product-archive">
+
+    <div class="container">
+        <p class="subscription__title archive-subtitle">{{ title }}</p>
+    </div>
+
+    <div class="container">
+            {% for post in posts %}
+            {% if post.featured_product != true %}
+                {{ macros.product_card(post) }}
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+</div>

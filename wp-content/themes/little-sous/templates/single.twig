@@ -6,14 +6,14 @@
 	{% include 'templates/single-social-buttons.twig' %}
 	</div>
 
-	{% block singlerecipe %}{% endblock %}
-	{% block singlepost %}{% endblock %}
-
-	<div class="container story__social-buttons--small-screen">
+    <div class="container story__social-buttons--small-screen">
 		<div class="story__social-buttons">
 		{% include 'templates/single-social-buttons.twig' %}
 		</div>
 	</div>
+
+	{% block singlerecipe %}{% endblock %}
+	{% block singlepost %}{% endblock %}
 
 	{% include 'templates/w_email.twig' %}
 

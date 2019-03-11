@@ -7,3 +7,11 @@
 <a class="story__social-button button--pinterest" target="_blank" href="http://pinterest.com/pin/create/button/?url={{ post.link|url_encode }}&media={{ TimberImage(post.thumbnail).src('wide_large')|url_encode }}&description={{ post.title|url_encode }}" rel="external nofollow" >
 	{{ icons.icon('pinterest') }}
 </a>
+
+<a class="story__social-button button--email" href="mailto:?subject=Shared Link from Little Sous&body=Check out this post from Little Sous: {{ post.link|url_encode }}" rel="external nofollow" >
+	{{ icons.icon('mail') }}
+</a>
+
+<a class="story__social-button button--sms" href="sms://&body={{ post.link|url_encode }}" rel="external nofollow" >
+	<i>SMS</i>
+</a>

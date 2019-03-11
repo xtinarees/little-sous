@@ -99,7 +99,9 @@ class LittleSous_Taxonomies {
 			),
 		);
 
-		register_taxonomy( 'supply', array( 'post', 'recipe' ), $args );
+        register_taxonomy( 'supply', array( 'post', 'recipe' ), $args );
+        
+
 
 	} //end public static function init_taxonomies
 

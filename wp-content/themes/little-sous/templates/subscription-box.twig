@@ -1,0 +1,28 @@
+<div class="page__content">
+    <p class="subscription__title archive-subtitle">{{ title }}</p>
+    <div id="subscription__box" class="container">
+        {% for subscription in subscriptions %}
+
+        <div class="subscription__item">
+            <span class="subscription__heading">{{ subscription.post_title }}</span>
+
+            {{ subscription.product_excerpt }}
+
+            <div class="subscription__item-price">
+                {{ subscription.price }}
+            </div>
+
+            <a class="subcription__btn" href="{{ fn('get_the_permalink', subscription.ID) }}">
+            
+                {% if subscription.featured_button_copy is empty %}
+                    Choose Plan
+                {% else %} 
+                    {{ subscription.featured_button_copy }}
+                {% endif %}
+            
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>

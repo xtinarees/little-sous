@@ -14,6 +14,7 @@ $sage_includes = [
   'lib/ajax-functions.php',
   'lib/class-dfp.php',
   'lib/class-LittleSousUser.php',
+  'lib/class-LittleSousProducts.php',
   'lib/class-LittleSousPost.php',
   'lib/class-LittleSousTerm.php',
   'lib/assets.php',    	// Scripts and stylesheets
@@ -21,7 +22,8 @@ $sage_includes = [
   'lib/setup.php',     	// Theme setup
   'lib/titles.php',    	// Page titles
   'lib/customizer.php', // Theme customizer,
-  'lib/widgets.php'
+  'lib/widgets.php',
+  'lib/shortcodes.php'
 ];
 
 foreach ($sage_includes as $file) {

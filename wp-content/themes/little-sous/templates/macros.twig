@@ -149,7 +149,24 @@
 	</article>
 {% endmacro %}
 
+{% macro product_card(field) %}
+	{% import _self as macros %}
+	{% set image = TimberImage(field.thumbnail) %}
 
+    <article class="product-card card js-card hover-card {% if field.is_sponsored %}card--is-sponsored{% endif %}">
+		<a class="card__underlay" href="{{ field.link }}"></a>
+		<a class="product__kicker-wrapper" href="{{ field.link }}">
+            <span class="date product-kicker">{{ field.product_date("F Y") }}</span>
+        	<img class="hover-card__image card__image image lazyload" data-srcset="{{ image.src('square_medium') }} 400w, {{ image.src('square_medium') }} 760w, {{ image.src('square_large') }} 1200w" sizes="(max-width: 580px) 100vw, (max-width: 1130px) 30vw, 353px" data-src="{{ image.src('square_large') }}" alt="{{ image.title }}">
+		</a>
+		{# <a class="card__category" href="{{ field.kicker().link }}">{{ field.kicker().name }}</a> #}
+		<div class="card__content">
+			<h1 class="hover-card__title product card__title"><a href="{{ field.link }}">{{ field.title }}</a></h1>
+            <a class="product__item-btn" href="#">Purchase</a>
+		</div>
+	</article>
+
+{% endmacro %}
 
 {% macro insta_card(field) %}
 	<a href="{{ field.link }}" class="js-card hover-card insta-card" target="_blank">

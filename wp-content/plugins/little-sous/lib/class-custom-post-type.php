@@ -26,7 +26,22 @@ class LittleSous_Custom_Post_type {
 				'menu_icon' => 'dashicons-book',
 				'supports' => array('title', 'editor', 'thumbnail', 'author', 'revisions', 'author')
 			)
-		);
+        );
+        
+        register_post_type( 'products', 
+            array(
+                'labels'    =>  array(
+                    'name'          =>  __('Products'),
+                    'singular_name' =>  __('Product')
+                ),
+                'public'    =>  true,
+                'has_archive'   =>  false,
+                'rewrite'   =>  array('slug' => 'shop'),
+                'menu_icon' =>  'dashicons-cart',
+                'supports'  =>  array('title', 'editor', 'thumbnail', 'author', 'revisions')
+            )
+        );
+
 	}
 
 }

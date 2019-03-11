@@ -1,0 +1,47 @@
+{% extends "templates/base.twig" %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="product-images product-slideshow">
+            <div class="slide-wrapper">
+                <div class="slides js-slides">
+                    {% for thumbnail in product.image_gallery_thumbnails %}
+                        <div class="slide">
+                            <img class="slide__image" src="{{ TimberImage(thumbnail.ID).src('square_large') }}">
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="slides-thumbnails js-slides-thumbnails">
+                    {% for thumbnail in product.image_gallery_thumbnails %}
+                        <div class="slides-thumbnail">
+                            <img class="image" src="{{ TimberImage(thumbnail.ID).src('square_small') }}">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="product-details">
+            <span class="product__date">{{ post.product_date }}</span>
+            <h1 class="story__title">{{ post.post_title }}</h1>
+
+            <strong>Price</strong>
+            {{ product.price }}
+
+            <strong>Description</strong>
+            {{ product.product_description }}
+
+            <strong>Contents</strong>
+            {{ product.product_content }}
+
+            {% if(product.buy_button) %}
+                {{ product.buy_button }}
+            {% endif %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

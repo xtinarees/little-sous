@@ -8,7 +8,8 @@ class LittleSous {
 			'Travel' => 'pizza-globe',
 			'Kitchen Academy' => 'hat',
 			'Recipes' => 'utensils',
-			'Video' => 'fire',
+            'Video' => 'fire',
+            'Shop our Boxes' => 'shop-icon'
 		];
 
 		return $icons[$name] ?? false;

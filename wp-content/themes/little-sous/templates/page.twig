@@ -3,7 +3,9 @@
 {% block content %}
 
 	<header class="page__header" {{ macros.background_image(TimberImage(post.thumbnail).src('wide_large')) }}>
-		<h1 class="page__title">{{ post.title }}</h1>
+		<div class="container">
+            <h1 class="page__title">{{ post.title }}</h1>
+        </div>
 	</header>
 
 	<div class="container">

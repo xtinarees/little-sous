@@ -39,7 +39,7 @@ include_once(LITTLESOUS_DIR . 'lib/acf-fields-recipe.php');
 include_once(LITTLESOUS_DIR . 'lib/acf-fields-category.php');
 include_once(LITTLESOUS_DIR . 'lib/acf-fields-user.php');
 include_once(LITTLESOUS_DIR . 'lib/acf-fields-media.php');
-
+include_once(LITTLESOUS_DIR . 'lib/acf-fields-products.php');
 
 include_once(LITTLESOUS_DIR . 'lib/class-LittleSous.php');
 include_once(LITTLESOUS_DIR . 'lib/class-popular-posts.php');
