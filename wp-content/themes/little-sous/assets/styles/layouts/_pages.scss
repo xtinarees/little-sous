@@ -27,6 +27,7 @@ $content-spacing: gutter(6);
 	@include font-scale(headline, 2);
 	color: $color__white;
 	z-index: 3;
+	position: relative;
 }
 
 .page__content {
