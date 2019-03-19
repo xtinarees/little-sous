@@ -185,21 +185,21 @@ $transition-time: 0.3s;
   background-position: 0 95%,100% 95%,0 95%;
 }
 
-@mixin link-style {
+@mixin link-style($color: $color__white) {
   @include link-underline;
   text-shadow: 
-    0.03em 0 $color__white, 
-    -0.03em 0 $color__white,
-    0 0.03em $color__white,
-    0 -0.03em $color__white,
-    0.06em 0 $color__white,
-    -0.06em 0 $color__white,
-    0.09em 0 $color__white,
-    -0.09em 0 $color__white,
-    0.12em 0 $color__white,
-    -0.12em 0 $color__white,
-    0.15em 0 $color__white,
-    -0.15em 0 $color__white;
+    0.03em 0 $color, 
+    -0.03em 0 $color,
+    0 0.03em $color,
+    0 -0.03em $color,
+    0.06em 0 $color,
+    -0.06em 0 $color,
+    0.09em 0 $color,
+    -0.09em 0 $color,
+    0.12em 0 $color,
+    -0.12em 0 $color,
+    0.15em 0 $color,
+    -0.15em 0 $color;
   @include transition(color);
 
   &:hover,

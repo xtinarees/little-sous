@@ -119,6 +119,27 @@ acf_add_local_field_group(array (
 			'layout' => 'block',
 			'sub_fields' => array(
 				array (
+					'key' => 'field_recipes_display_name',
+					'label' => 'Recipes Display Name',
+					'name' => 'display_name',
+					'type' => 'text',
+					'instructions' => 'The title of the Recipes archive page',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array (
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => 'Recipes',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'maxlength' => '',
+					'readonly' => 0,
+					'disabled' => 0,
+				),
+				array (
 					'key' => 'field_recipes_description',
 					'label' => 'Recipes Description',
 					'name' => 'description',
@@ -161,6 +182,24 @@ acf_add_local_field_group(array (
 					),
 				),
 			),
+		),
+		array (
+			'key' => 'field_recipes_footer',
+			'label' => 'Recipes Footer',
+			'name' => 'recipes_footer',
+			'type' => 'wysiwyg',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'tabs' => 'all',
+			'toolbar' => 'basic',
+			'media_upload' => 0,
 		),
 
 		// Tab: Newsletter

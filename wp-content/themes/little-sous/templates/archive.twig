@@ -87,4 +87,12 @@
 
 	{% include 'templates/w_message.twig' %}
 
+	{% if fn('is_post_type_archive', 'recipe') %}
+		<div class="archive-footer">
+			<div class="container archive-footer__content">
+				{{ options.recipes_footer }}
+			</div>
+		</div>
+	{% endif %}
+
 {% endblock %}

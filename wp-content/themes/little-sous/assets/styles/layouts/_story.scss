@@ -1,4 +1,4 @@
-@mixin type-styles($font-styles: true) {
+@mixin type-styles($font-styles: true, $color: $color__white) {
 
 	@if $font-styles == true {
 		@include font-scale(bodyCopy, 1);
@@ -175,7 +175,7 @@
 
 
 	a {
-		@include link-style;
+		@include link-style($color);
 	}
 
 	/*

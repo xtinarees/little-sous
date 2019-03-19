@@ -22,7 +22,7 @@ class LittleSous_Custom_Post_type {
 				),
 				'public' => true,
 				'has_archive' => true,
-				'rewrite' => array('slug' => 'recipes'),
+				'rewrite' => array('slug' => 'kid-friendly-recipes'),
 				'menu_icon' => 'dashicons-book',
 				'supports' => array('title', 'editor', 'thumbnail', 'author', 'revisions', 'author')
 			)

@@ -25,6 +25,21 @@
 	@include font-scale(textSans, 4);
 }
 
+.archive-footer {
+	background-color: $color__gray--medium;
+	@include type-styles(true, $color__gray--medium);
+	margin-top: gutter(6);
+	margin-bottom: -#{gutter(6)};
+	padding-top: gutter(6);
+	padding-bottom: gutter(6);
+}
+
+.archive-footer__content {
+	@include breakpoint(large-only) {
+		width: span(8 of 12);
+	}
+}
+
 
 
 
