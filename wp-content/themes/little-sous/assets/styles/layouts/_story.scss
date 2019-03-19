@@ -614,11 +614,13 @@ $social-button-width: 40px;
 	background-color: $color__orange;
 	display: block;
 	float: left;
+	color: $color__white;
+	@include font-scale(kicker, 1, $caps: true);
+	width: 40px; height: 40px;
+	display: flex; justify-content: center; align-items: center;
 	svg { 
+		width: 20px; height: 20px;
 		fill: $color__white;
-		width: $social-button-width;
-		height: $social-button-width;
-		padding: 10px;
 		display:block; 
 	}
 	@include transition(background-color);
@@ -626,6 +628,10 @@ $social-button-width: 40px;
 		@include transition(background-color);
 		background-color: $color__orange--dark;
 	}
+}
+
+.button--sms {
+	@include breakpoint(large-medium) {display:none;}
 }
 
 
