@@ -16,7 +16,7 @@
 
         <div class="footer__social-links">
         {% for link in options.social_links %}
-            <a class="footer__social-link" href="{{ link.link }}">
+            <a class="footer__social-link" href="{{ link.link }}" target="_blank">
                 {{ icons.icon(link.type, 'icon--white footer__social-icon') }}
             </a>
         {% endfor %}

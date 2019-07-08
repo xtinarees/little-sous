@@ -16,7 +16,7 @@
 
 			<div class="header__links">
 				{% for link in options.social_links %}
-					<a class="header__social-link" href="{{ link.link }}">
+					<a class="header__social-link" href="{{ link.link }}" target="_blank">
 						{{ icons.icon(link.type, 'icon--navy header__social-icon') }}
 					</a>
 				{% endfor %}

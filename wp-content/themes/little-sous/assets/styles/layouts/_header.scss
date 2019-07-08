@@ -1,104 +1,103 @@
 $newsletter-form__height: 30px;
 $logo__width: 330px;
 
-
 @include breakpoint(medium-small) {
-    .is-menu-open,
-    .is-menu-open body {
-        width: 100vw;
-        height: 100vw;
-        overflow: hidden;
-    }
+  .is-menu-open,
+  .is-menu-open body {
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+  }
 
-    .is-menu-open {
-        .header {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            z-index: 1000;
-            // overflow-y: auto;
-            background-color: $color__navy;
-        }
-        .nav {
-            height: 100vh;
-            overflow-y: auto;
-        }
+  .is-menu-open {
+    .header {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      // overflow-y: auto;
+      background-color: $color__navy;
     }
+    .nav {
+      height: 100vh;
+      overflow-y: auto;
+    }
+  }
 }
-
 
 .header__top {
-    padding: 1rem;
-    @include breakpoint(medium-small) {
-        background-color: $color__navy;
-        padding: 0.3rem;
-    }
+  padding: 1rem;
+  @include breakpoint(medium-small) {
+    background-color: $color__navy;
+    padding: 0.3rem;
+  }
 }
 
-.header__logo-image--top { 
-    @include center-block;
+.header__logo-image--top {
+  @include center-block;
 }
 
 .header__top__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header__newsletter {
-    flex-grow: 1;
-    flex-basis: 0;
-    text-align: center;
-    justify-content: center;
-    @include breakpoint(medium-small) { display: none; }
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: center;
+  justify-content: center;
+  @include breakpoint(medium-small) {
+    display: none;
+  }
 }
-
 
 .header__newsletter-signup__form-wrapper {
-    .hs-form {
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
-        @include breakpoint(large-only) {
-            max-width: 280px;
-        }
-        @include breakpoint(medium-small) {
-            margin-top: 3rem;
-        }
-        @include breakpoint(medium-only) {
-            max-width: 50vw;
-        }
+  .hs-form {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    @include breakpoint(large-only) {
+      max-width: 280px;
     }
+    @include breakpoint(medium-small) {
+      margin-top: 3rem;
+    }
+    @include breakpoint(medium-only) {
+      max-width: 50vw;
+    }
+  }
 
-    .hs_email{
-        flex-grow: 1;
-        
-        input {
-            @include form-input-resets;
-            height: $newsletter-form__height;
-            line-height: $newsletter-form__height;
-            background-color: $color__gray--medium;
-            border-radius: 0;
-            width: 100%;
-        }
-    }
+  .hs_email {
+    flex-grow: 1;
 
-    .hs_submit {
-        input {
-            @include form-submit-resets;
-            height: $newsletter-form__height;
-            line-height: $newsletter-form__height;
-            padding: 0 2em;
-            width: 100%;
-        }
+    input {
+      @include form-input-resets;
+      height: $newsletter-form__height;
+      line-height: $newsletter-form__height;
+      background-color: $color__gray--medium;
+      border-radius: 0;
+      width: 100%;
     }
+  }
+
+  .hs_submit {
+    input {
+      @include form-submit-resets;
+      height: $newsletter-form__height;
+      line-height: $newsletter-form__height;
+      padding: 0 2em;
+      width: 100%;
+    }
+  }
 }
 
-// .header__newsletter-signup__form { 
+// .header__newsletter-signup__form {
 //     display: inline-block;
 //     @include breakpoint(medium-small) {
 //         display: flex;
@@ -128,169 +127,183 @@ $logo__width: 330px;
 // }
 
 .header__menu-mobile {
-    @include breakpoint(medium-small) { flex-grow: 0; }
-    cursor: pointer;
+  @include breakpoint(medium-small) {
+    flex-grow: 0;
+  }
+  cursor: pointer;
 }
 
+.header__logo {
+  text-align: center;
 
-.header__logo { 
-    text-align: center;
+  @include breakpoint(large-only) {
+    flex-grow: 0;
+    flex-basis: $logo__width;
+  }
 
-    @include breakpoint(large-only) {
-        flex-grow: 0;
-        flex-basis: $logo__width;
-    }
-
-    @include breakpoint(medium-small) { flex-grow: 1; }
+  @include breakpoint(medium-small) {
+    flex-grow: 1;
+  }
 }
 
 .header__logo-image {
-    width: $logo__width;
-    max-width: 100%;
-    height: auto;
+  width: $logo__width;
+  max-width: 100%;
+  height: auto;
 
-    @include breakpoint(medium-small) {
-        @include svg-color($color__white);
-        width: 100%;
-        max-width: 200px;
-    }
+  @include breakpoint(medium-small) {
+    @include svg-color($color__white);
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
-.header__logo-image--bottom { 
-    @include center-block; // display block to get rid of extra white space below image
-    @include breakpoint(small-only) {
-        max-height: 30px;
-    }
+.header__logo-image--bottom {
+  @include center-block; // display block to get rid of extra white space below image
+  @include breakpoint(small-only) {
+    max-height: 30px;
+  }
 }
-
 
 .header__links {
-    flex-grow: 1;
-    flex-basis: 0;
-    text-align: center;
-    position: relative;
-    @include breakpoint(medium-small) { display: none; }
+  flex-grow: 1;
+  flex-basis: 0;
+  text-align: center;
+  position: relative;
+  @include breakpoint(medium-small) {
+    display: none;
+  }
 }
 
 .header__social-link {
-    @include hover-opacity;
+  @include hover-opacity;
 }
 
 .header__social-icon {
-    width: 16px;
-    height: auto;
-    margin-right: 1em;
-    vertical-align: middle;
+  width: 16px;
+  height: auto;
+  margin-right: 1em;
+  vertical-align: middle;
 }
 
 $search-width: 22px;
 
 .header__search {
-    width: $search-width;
-    margin-left: 0.5rem;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
+  width: $search-width;
+  margin-left: 0.5rem;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .header__search-icon {
-    width: $search-width;
-    height: auto;
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    line-height: 25px;
-    cursor: pointer;
-    @include hover-opacity;
+  width: $search-width;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  line-height: 25px;
+  cursor: pointer;
+  @include hover-opacity;
 }
 
 .search {
-    position: absolute; 
-    right: 0;
-    top: 0;
-    width: 200px;
-    text-align: right;
-    z-index: -1;
-    &.is-active {
-        z-index: 0;
-    }
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px;
+  text-align: right;
+  z-index: -1;
+  &.is-active {
+    z-index: 0;
+  }
 }
 
 .search__input {
-    display: inline-block;
-    width: 1px;
-    padding: 0;
-    margin: 0;
-    border: 0.5px solid $color__navy;
-    height: 25px;
-    line-height: 25px;
+  display: inline-block;
+  width: 1px;
+  padding: 0;
+  margin: 0;
+  border: 0.5px solid $color__navy;
+  height: 25px;
+  line-height: 25px;
 
+  @include transition(width);
+  &.is-active {
+    border-width: 1px;
+    width: calc(200px - 0.5rem - #{$search-width});
     @include transition(width);
-    &.is-active {
-        border-width: 1px;
-        width: calc(200px - 0.5rem - #{$search-width});
-        @include transition(width);
-        padding: 0 0.5em;
-    }
+    padding: 0 0.5em;
+  }
 }
 
 .search__submit {
-    width: $search-width;
-    margin-left: 0.5rem;
-    border: 0;
-    background-color: $color__white;
-    text-shadow: none;
-    box-shadow: none;
-    color: $color__white;
-    display: inline-block;
+  width: $search-width;
+  margin-left: 0.5rem;
+  border: 0;
+  background-color: $color__white;
+  text-shadow: none;
+  box-shadow: none;
+  color: $color__white;
+  display: inline-block;
 }
 
 .nav {
-    z-index: 10000 !important;
-    background-color: $color__navy;
-    color: $color__white;
-    @include font-scale(kicker, 1, $caps: true);
-    @include breakpoint(large-only) { padding: 1rem 0; }
-    @include breakpoint(medium-small) { 
-        padding-bottom: 3rem;
-    }
+  z-index: 10000 !important;
+  background-color: $color__navy;
+  color: $color__white;
+  @include font-scale(kicker, 1, $caps: true);
+  @include breakpoint(large-only) {
+    padding: 1rem 0;
+  }
+  @include breakpoint(medium-small) {
+    padding-bottom: 3rem;
+  }
 
-    &.scroll-to-fixed-fixed { padding: 0.2rem; }
+  &.scroll-to-fixed-fixed {
+    padding: 0.2rem;
+  }
 }
 
 .nav-inner {
-    @include breakpoint(large-only) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
-    }
+  @include breakpoint(large-only) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  @include breakpoint(medium-small) {
+    margin-bottom: 150px;
+  }
 }
 
 .nav__logo {
-    display: none;
-    width: 95px;
-    height: auto;
-    .scroll-to-fixed-fixed & { display: block; }
+  display: none;
+  width: 95px;
+  height: auto;
+  .scroll-to-fixed-fixed & {
+    display: block;
+  }
 }
 
 .nav__item {
-    flex-grow: 2;
-    @include hover-opacity;
-    @include breakpoint(medium-small) {
-        width: 100%;
-        display: block;
-        text-align: center;
-        &:not(:first-child) {
-            margin-top: 2em;
-        }
+  flex-grow: 2;
+  @include hover-opacity;
+  @include breakpoint(medium-small) {
+    width: 100%;
+    display: block;
+    text-align: center;
+    &:not(:first-child) {
+      margin-top: 2em;
     }
+  }
 }
 
 .nav__item-icon {
-    max-width: 25vw;
-    height: auto;
-    @include center-block;
-    @include breakpoint(large-only) { display: none; }
+  max-width: 25vw;
+  height: auto;
+  @include center-block;
+  @include breakpoint(large-only) {
+    display: none;
+  }
 }
-
